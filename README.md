@@ -10,9 +10,6 @@ The following actions should possible for the following types of users:
 
 Visitors who have not logged in should only see the login page.
 
-Teachers who have logged in should be able to:
-Enter, edit, or delete grades for a student. These grades are things like "Got a B on the 2/4/2015 homework", not just one grade per student.
-
 Students who have logged in should be able to:
 See their grades.
 

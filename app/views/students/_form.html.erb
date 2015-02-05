@@ -3,6 +3,6 @@
   <%= f.text_field :email, placeholder: "Email" %><br>
   <%= f.password_field :password, placeholder: "Password" %><br>
   <%= f.collection_select :teacher_id, Teacher.all, :id, :name %><br>
-  <%= f.collection_select :parent_id, Parent.all, :id, :name %><br>
+  <%= f.collection_select :parent_id, Parent.all, :id, :parent_name %><br>
   <%= f.submit "Submit"%>
 <% end %>

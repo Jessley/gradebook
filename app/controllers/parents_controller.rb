@@ -1,4 +1,5 @@
 class ParentsController < ApplicationController
+  
   def index
   end
 
@@ -13,9 +14,6 @@ class ParentsController < ApplicationController
     else
       render 'new', notice: "Try again"
     end
-  end
-
-  def create
   end
 
   def update
