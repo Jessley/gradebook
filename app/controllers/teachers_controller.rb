@@ -3,9 +3,16 @@ class TeachersController < ApplicationController
   end
 
   def new
+    @teacher = Teacher.new
   end
 
   def create
+    @teacher = Teacher.new(teacher_params)
+    if @teacher.save
+      redirect_to teachers_path, notice: "Teacher was successfully created"
+    else
+      render :new, notice: "Try again"
+    end
   end
 
   def update
@@ -16,4 +23,15 @@ class TeachersController < ApplicationController
 
   def edit
   end
+
+
+private
+  def teacher_params
+    params.require(:teacher).permit(:name, :email, :password)
+  end
+
+
+
+
+
 end
