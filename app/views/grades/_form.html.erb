@@ -1,0 +1,7 @@
+<%= form_for @grade do |f| %>
+  <%= f.collection_select :student_id, Student.all, :id, :name %><br>
+  <%= f.text_field :grade, placeholder: "Grade" %><br>
+  <%= f.date_field :date, placeholder: "Date" %><br>
+  <%= f.text_field :grade_type, placeholder: "Grade Type" %><br>
+  <%= f.submit "Submit"%>
+<% end %>
