@@ -12,10 +12,6 @@ class LoginController < ApplicationController
     end
   end
 
-  def parent_logout
-
-  end
-
   def student_login
     if request.post?
       student = Student.find_by_email(params[:email].downcase)
@@ -29,8 +25,6 @@ class LoginController < ApplicationController
     end
   end
 
-  def student_logout
-  end
 
   def teacher_login
     if request.post?
@@ -45,7 +39,7 @@ class LoginController < ApplicationController
     end
   end
 
-  def teacher_logout
+  def logout
   end
 
 
