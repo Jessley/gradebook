@@ -8,8 +8,6 @@ Requirements
 
 The following actions should possible for the following types of users:
 
-
-
 Parents who have logged in should be able to:
 See their student's grades.
 
