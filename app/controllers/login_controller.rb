@@ -49,6 +49,18 @@ class LoginController < ApplicationController
     redirect_to login_index_path
   end
 
+  def profile
+    if session[:user_id] && session[:user_type] == "teacher"
+      redirect_to edit_teacher_path(session[:user_id])
+    elsif session[:user_id] && session[:user_type] == "parent"
+      redirect_to edit_parent_path(session[:user_id])
+    elsif session[:user_id] && session[:user_type] == "student"
+      redirect_to edit_student_path(session[:user_id])
+    else
+      redirect_to root_path, notice: "Please log in to see this page."
+    end
+  end
+
 
   private
 

@@ -3,14 +3,26 @@ module StudentsHelper
   # See their grades.
   def all_students
     result = "<table>"
-    teacher= Teacher.find(session[:user_id])
-    if teacher
+    if session[:user_type] == "teacher"
+      teacher= Teacher.find(session[:user_id])
       teacher.students.each do |s|
         result << "<tr>"
         result << "<td>#{s.name}</td>"
         result << "<td>#{Parent.find(s.parent_id).parent_name}</td>"
         result << "</tr>"
       end
+      result << "</table>"
+    elsif session[:user_type] == "student"
+      student = Student.find(session[:user_id])
+      result << "<tr>"
+      result << "<td>#{student.name}</td>"
+      result << "</tr>"
+      result << "</table>"
+    elsif session[:user_type] == "parent"
+      parent = Parent.find(session[:user_id])
+      result << "<tr>"
+      result << "<td>#{parent.students.first.name}</td>"
+      result << "</tr>"
       result << "</table>"
     end
     result.html_safe

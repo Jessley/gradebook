@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'login/logout'
 
+  get 'login/profile'
+
   resources :teachers
   resources :parents
   resources :students
