@@ -7,19 +7,31 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     if session[:user_id]== nil
       flash[:notice] = "You must log in to see that page"
-      redirect_to(:controller => 'login', :action => 'index')
+      redirect_to(:controller => 'login', :action => 'new')
       return false
     end
   end
 
-  def user_type
-    if student_login
-      user_type= "student"
-    elsif login.teacher_login
-      user_type= "teacher"
-    elsif login.parent_login
-      user_type= "parent"
-    end
-    return user_type
+  # def user_type
+  #   if student_login
+  #     user_type= "student"
+  #   elsif login.teacher_login
+  #     user_type= "teacher"
+  #   elsif login.parent_login
+  #     user_type= "parent"
+  #   end
+  #   return user_type
+  # end
+
+  def find_teacher
+    Teacher.find_by(email: params[:email].downcase)
+  end
+
+  def find_student
+    Student.find_by(email: params[:email].downcase)
+  end
+
+  def find_parent
+    Parent.find_by(email: params[:email].downcase)
   end
 end
