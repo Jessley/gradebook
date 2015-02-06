@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <p id="notice"><%= notice %></p>
+  <%= link_to "Logout", login_logout_path%>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

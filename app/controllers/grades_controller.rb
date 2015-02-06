@@ -9,13 +9,23 @@ class GradesController < ApplicationController
   end
 
   def new
-    @grade = Grade.new
+    if @current_user== "teacher"
+      @grade = Grade.new
+    else
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    end
   end
 
   def destroy
+    if @current_user != "teacher"
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    end
   end
 
   def edit
+    if @current_user != "teacher"
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    end
   end
 
   def update

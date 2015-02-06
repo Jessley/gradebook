@@ -1,9 +1,15 @@
 class TeachersController < ApplicationController
+  before_action :authenticate_user
+
   def index
   end
 
   def new
-    @teacher = Teacher.new
+    if @current_user== "teacher"
+      @teacher = Teacher.new
+    else
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    end
   end
 
   def create

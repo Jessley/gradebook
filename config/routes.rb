@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   post 'login/teacher_login'
 
+  get 'login/index'
+
+  get 'login/logout'
+
   resources :teachers
   resources :parents
   resources :students
@@ -21,7 +25,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'login#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
