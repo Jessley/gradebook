@@ -12,6 +12,10 @@ class LoginController < ApplicationController
     end
   end
 
+  def index
+
+  end
+
   def student_login
     if request.post?
       student = Student.find_by_email(params[:email].downcase)
@@ -40,6 +44,8 @@ class LoginController < ApplicationController
   end
 
   def logout
+    session[:user_id] == nil
+    redirect_to login_index_path
   end
 
 
