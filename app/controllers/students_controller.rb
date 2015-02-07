@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   end
 
   def new
-    if @current_user== "teacher"
+    if session[:user_type]== "teacher"
       @student = Student.new
     else
       redirect_to root_path, notice: "You must be a teacher to see that page"
@@ -33,6 +33,12 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    if session[:user_type] != "teacher"
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    else
+      @student.destroy
+      redirect_to student_path, notice: 'Student was successfully destroyed.'
+    end
   end
 
   def edit

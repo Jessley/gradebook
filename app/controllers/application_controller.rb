@@ -12,16 +12,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def user_type
-  #   if student_login
-  #     user_type= "student"
-  #   elsif login.teacher_login
-  #     user_type= "teacher"
-  #   elsif login.parent_login
-  #     user_type= "parent"
-  #   end
-  #   return user_type
-  # end
 
   def find_teacher
     Teacher.find_by(email: params[:email].downcase)

@@ -22,15 +22,13 @@ module GradesHelper
       end
       result << "</table>"
     elsif session[:user_type] == "teacher"
+      result << "<p>"
       Student.all.each do |i|
-        result << "<tr>"
         i.grades.each do |g|
-        result << "<td>#{g.grade}</td>"
+        result << "#{link_to "#{i.name} received a #{g.grade} on the #{g.grade_type} for #{g.date}.", edit_grade_path(g)}"
+        result << "</p>"
+        end
       end
-        result << "<td>#{i.name}</td>"
-        result << "</tr>"
-      end
-      result << "</table>"
     end
     result.html_safe
   end

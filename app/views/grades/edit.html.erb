@@ -1,2 +1,3 @@
-<h1>Grades#edit</h1>
-<p>Find me in app/views/grades/edit.html.erb</p>
+<h1>Edit Grades</h1>
+<%= render 'form' %>
+<%= button_to "Delete", grades_path, :method=>:delete, :class=>:destroy %>

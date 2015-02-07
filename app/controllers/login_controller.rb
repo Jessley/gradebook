@@ -1,6 +1,13 @@
 class LoginController < ApplicationController
 
   def new
+    if session[:user_type] == "teacher"
+      redirect_to students_path
+    elsif session[:user_type] == "student"
+      redirect_to grades_path
+    elsif session[:user_type] == "parent"
+      redirect_to grades_path
+    end
 
   end
 
@@ -17,10 +24,8 @@ class LoginController < ApplicationController
       make_session(user, user_type)
       if session[:user_type] == "teacher"
         redirect_to teachers_path
-      elsif session[:user_type] == "student"
-        redirect_to students_path
-      elsif session[:user_type] == "parent"
-        redirect_to parents_path
+      elsif session[:user_type] == "student" || session[:user_type] == "parent"
+        redirect_to grades_path
       end
     else
       flash[:error] = 'Invalid email/password combination'

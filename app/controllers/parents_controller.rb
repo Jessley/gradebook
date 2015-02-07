@@ -7,7 +7,7 @@ class ParentsController < ApplicationController
   end
 
   def new
-    if @current_user== "teacher"
+    if session[:user_type]== "teacher"
       @parent = Parent.new
     else
       redirect_to root_path, notice: "You must be a teacher to see that page"
@@ -24,9 +24,20 @@ class ParentsController < ApplicationController
   end
 
   def update
+    if @parent.update(parent_params)
+      redirect_to parents_path, notice: 'Parent was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if session[:user_type] != "teacher"
+      redirect_to root_path, notice: "You must be a teacher to see that page"
+    else
+      @parent.destroy
+      redirect_to parent_path, notice: 'Parent was successfully destroyed.'
+    end
   end
 
   def edit

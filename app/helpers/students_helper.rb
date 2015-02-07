@@ -7,7 +7,7 @@ module StudentsHelper
       teacher= Teacher.find(session[:user_id])
       teacher.students.each do |s|
         result << "<tr>"
-        result << "<td>#{s.name}</td>"
+        result << "<td>#{link_to s.name, edit_student_path(s)}</td>"
         result << "<td>#{Parent.find(s.parent_id).parent_name}</td>"
         result << "</tr>"
       end

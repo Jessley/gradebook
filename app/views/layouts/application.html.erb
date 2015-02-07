@@ -6,10 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<%= render 'layouts/navigation' %>
 <body>
   <p id="notice"><%= notice %></p>
-  <%= link_to "Logout", login_logout_path%>
-  <%= link_to "Edit Profile", login_profile_path%>
+
+
 
   <%= yield %>
 

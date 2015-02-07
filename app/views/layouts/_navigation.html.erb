@@ -1,0 +1,19 @@
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><%= link_to "Home", root_path %></li>
+        <li class="nav-link"><%=link_to "Edit Profile", login_profile_path if session[:user_id] %></li>
+        <li class="nav-link"><%=link_to "Add Parents", new_parent_path(:teacher_id=>session[:user_id]) if session[:user_type]=="teacher" %></li>
+        <li class="nav-link"><%=link_to "Add Students", new_student_path(:teacher_id=>session[:user_id]) if session[:user_type]=="teacher" %></li>
+        <li class="nav-link"><%=link_to "Add Teacher", new_teacher_path if session[:user_type]=="teacher" %></li>
+        <li class="nav-link"><%=link_to "Grades", grades_path if session[:user_type]=="teacher" %></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <%=link_to "Logout", login_logout_path, :class => "sign-up" if session[:user_id] %>
+    </div>
+  </div>
+</header>
