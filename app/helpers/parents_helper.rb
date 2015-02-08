@@ -10,9 +10,11 @@ module ParentsHelper
       end
       result << "</table>"
     elsif session[:user_type] == "student"
-      redirect_to root_path, notice: "You do not have permission to view that page"
+      result << "You do not have permission to view that page"
+      result << "<td>#{link_to "Home", root_path}</td>"
     elsif session[:user_type] == "parent"
-      redirect_to root_path, notice: "You do not have permission to view that page"
+      result << "You do not have permission to view that page"
+      result << "<td>#{link_to "Home", root_path}</td>"
     end
     result.html_safe
   end
